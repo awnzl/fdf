@@ -6,7 +6,7 @@
 /*   By: avenzel <avenzel@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 16:48:16 by avenzel           #+#    #+#             */
-/*   Updated: 2017/02/16 16:51:16 by avenzel          ###   ########.fr       */
+/*   Updated: 2017/12/05 18:57:56 by avenzel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
-# include "libft/libft.h"
+# include "libft.h"
 # include <mlx.h>
 
 # define RADIAN(a) (a = 0.01745329 * a)

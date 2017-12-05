@@ -6,7 +6,7 @@
 #    By: avenzel <avenzel@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/16 16:41:45 by avenzel           #+#    #+#              #
-#    Updated: 2017/02/16 18:20:24 by avenzel          ###   ########.fr        #
+#    Updated: 2017/12/05 19:49:36 by avenzel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,26 +17,34 @@ SRC		= fdf.c	fillxy.c	check_keys.c	draw_line.c	 free_functions.c	\
 		  get_data.c	get_image_content.c	get_window.c	\
 		  let_the_window_begin.c	verify.c
 
-OBJ		= $(SRC:.c=.o)
+INCDIR	= ./inc
+SRCDIR	= ./src
+OBJDIR	= ./obj
+
 CC		= gcc -Wall -Wextra -Werror
 
-all		: $(NAME)
+OBJ		= $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
 
-$(NAME)	: $(OBJ) $(LIBFT)
+$(NAME)	: obj $(OBJ) $(LIBFT)
 	$(CC) $(OBJ) -o $(NAME) $(LIBFT) \
 		-O3 -lmlx -framework OpenGL -framework AppKit
 
-%.o: %.c
-	$(CC) -c -o $@ $<
+all		: $(NAME)
+
+obj		:
+	@mkdir -p $(OBJDIR)
+
+$(OBJDIR)/%.o:$(SRCDIR)/%.c
+	$(CC) -I $(INCDIR) -I ./libft -o $@ -c $<
 
 $(LIBFT)	:
-	make -C libft/
+	@make -C libft/
 
 lclean	:
-	make -C libft/ clean
+	@make -C libft/ clean
 
 clean	: lclean
-	rm -f *.o
+	rm -rf $(OBJDIR)
 
 fclean	: clean
 	rm -f $(NAME)

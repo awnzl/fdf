@@ -1,0 +1,14 @@
+Rotate:
+	arrows and [ ]
+	i - default position
+
+Move:
+	Numpad 2 4 6 8
+	Numpad 5 - default position
+	
+Zoom:
+	Numpud + and -
+	
+Other:
+	p - only dots representation
+	esc - exit 
