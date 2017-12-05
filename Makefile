@@ -6,7 +6,7 @@
 #    By: avenzel <avenzel@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/16 16:41:45 by avenzel           #+#    #+#              #
-#    Updated: 2017/12/05 19:49:36 by avenzel          ###   ########.fr        #
+#    Updated: 2017/12/05 20:06:07 by avenzel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ CC		= gcc -Wall -Wextra -Werror
 
 OBJ		= $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
 
-$(NAME)	: obj $(OBJ) $(LIBFT)
+$(NAME)	: obj $(OBJ) $(LIBFT) $(MLX)
 	$(CC) $(OBJ) -o $(NAME) $(LIBFT) \
-		-O3 -lmlx -framework OpenGL -framework AppKit
+		-O3 -L ./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit
 
 all		: $(NAME)
 
@@ -35,13 +35,17 @@ obj		:
 	@mkdir -p $(OBJDIR)
 
 $(OBJDIR)/%.o:$(SRCDIR)/%.c
-	$(CC) -I $(INCDIR) -I ./libft -o $@ -c $<
+	$(CC) -I $(INCDIR) -I ./libft -I ./minilibx_macos -o $@ -c $<
 
 $(LIBFT)	:
 	@make -C libft/
 
+$(MLX)		:
+	@make -C minilibx_macos/
+
 lclean	:
-	@make -C libft/ clean
+	@make -C libft/ fclean
+	@make -C minilibx_macos/ fclean
 
 clean	: lclean
 	rm -rf $(OBJDIR)

@@ -6,7 +6,7 @@
 #    By: avenzel <avenzel@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/30 16:50:29 by avenzel           #+#    #+#              #
-#    Updated: 2017/02/16 17:20:53 by avenzel          ###   ########.fr        #
+#    Updated: 2017/12/05 20:06:39 by avenzel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ $(NAME):	$(OBJ)
 	ranlib $(NAME)
 
 %.o: %.c
-	gcc $(FLG) -c -o $@ $<
+	@gcc $(FLG) -c -o $@ $<
 
 clean:
 	rm -f $(OBJ)
